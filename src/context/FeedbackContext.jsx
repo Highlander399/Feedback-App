@@ -19,7 +19,7 @@ export function FeedbackProvider ({children}) {
        }, []);
 
     const fetchDate = async () => {
-        const response = await fetch ("http://localhost:3000/feedback")
+        const response = await fetch ("http://192.168.134.2:3000/feedback")
         const data = await response.json();
         setFeedback(data)
     };
@@ -32,7 +32,7 @@ export function FeedbackProvider ({children}) {
     };
 
     const updateFeedback = async (id, uptItem) => {
-        const response = await fetch (`http://localhost:3000/feedback/${id}`,{
+        const response = await fetch (`http://192.168.134.2:3000/feedback/${id}`,{
           method: "PUT",
           headers: {
             "Content-Type": "application/json"
@@ -45,13 +45,13 @@ export function FeedbackProvider ({children}) {
 
   const handleDeleteFeedback = async (id) => {
     if (window.confirm("Are you sure you want to delete?...")) {
-      await fetch(`http://localhost:3000/feedback/${id}`, {method: "DELETE"})
+      await fetch(`http://192.168.134.2:3000/feedback/${id}`, {method: "DELETE"})
       setFeedback(feedback.filter((item) => item.id !== id ))
     }
   };
 
   const addFeedback = async (newfeedback) => {
-    const response = await fetch ("http://localhost:3000/feedback", {
+    const response = await fetch ("http://192.168.134.2:3000/feedback", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
